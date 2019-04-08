@@ -94,12 +94,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 //Success
                 print("Registration Successfull")
                 
+                SVProgressHUD.dismiss()
+                self.performSegue(withIdentifier: "BookingLoginViewController", sender: self)
                 
                 
 //                self.performSegue(withIdentifier: "BookingLoginViewController", sender: self)
                 
                
             }
+            
         }
         
     }

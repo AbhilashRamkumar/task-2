@@ -146,7 +146,10 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
     
     
     
-    @IBAction func checkPressed(_ sender: UIButton) {
+    
+        
+        
+    @IBAction func bookPressed(_ sender: Any) {
         
         
         
@@ -159,7 +162,7 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
         
         print("Starting call to firebase")
         
-        let ref = Database.database().reference()
+        var ref = Database.database().reference()
         
         guard let user = Auth.auth().currentUser else {
             print("User  not authenticated")
@@ -180,43 +183,132 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             else {
                 print("Data saved successfully!")
             }
-        
-        
+            
+            
+            
+        }
         // Retrieving fo data
-
-            ref.child("bookings").observe(.childAdded, with: { (snapshot) in
-                
-                _ = [DataSnapshot]()
-                
-                for item in snapshot.children {
-                    
-                    if ((item as! DataSnapshot).value as? String) != nil {
-                        // might want to do another loop if you have an array of places to check
-                        
-                        if snapshot.value as? String == "myData" {
-                            // this is what you want
-                        }
-                        
-                    }
-                    
-                }
-            })
+        let messagesDB = Database.database().reference().child("booking")
+        messagesDB.childByAutoId().setValue(myData) {
+            (error, reference) in
+            
+            if error != nil {
+                print(error!)
+            }
+            else {
+                print("Message saved successfully!")
+            }
+            
+        }
+        
+        Database.database().reference(withPath: "booking").queryOrdered(byChild: "mydata").queryEqual(toValue: myData).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.children.allObjects.count)
+            if snapshot.children.allObjects.count == 0{
+                self.commentsTextfield.text = "Available"
+            }
+            else{
+                self.commentsTextfield.text = "Room Not Available"
+            }
+        })
+        
     }
-    }
-
-
-
-
     
+    
+    
+   
+    
+    
+    @IBAction func checkPressed(_ sender: Any) {
+        
+        
+        
+        guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let time = TimeTextField.text,
+            let hall = ConferenceHallTextfield.text else {
+                print("Please provide a value for the previous textfields")
+                return
+        }
+        
+        print("Starting call to firebase")
+        
+        var ref = Database.database().reference()
+        
+        guard let user = Auth.auth().currentUser else {
+            print("User  not authenticated")
+            return
+        }
+        
+        let myData: [String: String] = [
+            "name": name,
+            "date": date,
+            "time": time,
+            "conference-hall": hall
+        ]
+        
+        
+        Database.database().reference(withPath: "booking").queryOrdered(byChild: "mydata").queryEqual(toValue: myData).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.children.allObjects.count)
+            if snapshot.children.allObjects.count == 0{
+                self.commentsTextfield.text = "Available"
+            }
+            else{
+                self.commentsTextfield.text = "Room Not Available"
+            }
+        })
+        ref.child("booking").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild("mydata"){
+                
+                print("rooms exist")
+                
+            }else{
+                
+                print("room doesn't exist")
+            }
+            
+            
+        })
 
-    /*    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        
+        
     }
-    */
+    
+    /*    // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    //    func retrievebookings() {
+    //
+    //        let messageDB = Database.database().reference().child("bookings")
+    //
+    //        messageDB.observe(.childAdded) { (snapshot) in
+    //
+    //            let snapshotValue = snapshot.value as! Dictionary<String,String>
+    //            let text = snapshotValue["myData"]!
+    //            let sender = snapshotValue["Sender"]!
+    //
+    //            let message = Message()
+    //            message.messageBody = text
+    //            message.sender = sender
+    //
+    //            self.messageArray.append(message)
+    //
+    //
+    //
+    //
+    //
+    //        }
+    //
+    //
+    //
+    //    }
 
-}
+    }
+    
+    
 

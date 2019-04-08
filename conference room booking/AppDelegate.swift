@@ -21,13 +21,6 @@ import IQKeyboardManagerSwift
         FirebaseApp.configure()
         // Override point for customization after application launch.
         
-        
-        let myDatabase = Database.database().reference()
-        
-        myDatabase.setValue("we got data!")
-
-     
-        
         IQKeyboardManager.shared.enable = true
         
         return true

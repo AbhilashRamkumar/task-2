@@ -12,6 +12,8 @@ target 'conference room booking' do
     pod 'SVProgressHUD'
     pod 'ChameleonFramework'
     pod 'IQKeyboardManagerSwift'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
 
 
 end

@@ -14,6 +14,7 @@
 		847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */; };
 		847064D22252410700FA95A4 /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064D12252410700FA95A4 /* AdminLoginViewController.swift */; };
 		84DA0B28224F7A2000C49988 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA0B27224F7A2000C49988 /* RegisterViewController.swift */; };
+		84ED2E1622606F9D00408A96 /* tableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED2E1522606F9D00408A96 /* tableListCell.swift */; };
 		AD02B22B224C8A2100197D28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD02B22A224C8A2000197D28 /* GoogleService-Info.plist */; };
 		ADFF754F224B888F0098EEAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF754E224B888F0098EEAD /* AppDelegate.swift */; };
 		ADFF7551224B888F0098EEAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF7550224B888F0098EEAD /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginViewController.swift; sourceTree = "<group>"; };
 		847064D12252410700FA95A4 /* AdminLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
 		84DA0B27224F7A2000C49988 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		84ED2E1522606F9D00408A96 /* tableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableListCell.swift; sourceTree = "<group>"; };
 		850A8B18D0F5D6A23F2EBC8D /* Pods-conference room booking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conference room booking.release.xcconfig"; path = "Target Support Files/Pods-conference room booking/Pods-conference room booking.release.xcconfig"; sourceTree = "<group>"; };
 		91BA4E008C0AC75936F4949A /* Pods_conference_room_booking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conference_room_booking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD02B22A224C8A2000197D28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				847064D12252410700FA95A4 /* AdminLoginViewController.swift */,
 				847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */,
+				84ED2E1522606F9D00408A96 /* tableListCell.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -204,11 +207,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-conference room booking/Pods-conference room booking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -216,11 +221,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -261,6 +268,7 @@
 				847064CE2251E5CC00FA95A4 /* BookRegViewController.swift in Sources */,
 				84DA0B28224F7A2000C49988 /* RegisterViewController.swift in Sources */,
 				ADFF7551224B888F0098EEAD /* ViewController.swift in Sources */,
+				84ED2E1622606F9D00408A96 /* tableListCell.swift in Sources */,
 				847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */,
 				ADFF754F224B888F0098EEAD /* AppDelegate.swift in Sources */,
 				842281EB225328E30059D332 /* BookingViewController.swift in Sources */,
@@ -412,6 +420,7 @@
 			baseConfigurationReference = F09ADC4A6DAB85A61F798DAA /* Pods-conference room booking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JRX54P7M6Q;
 				INFOPLIST_FILE = "conference room booking/Info.plist";
@@ -422,6 +431,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.primethorgg.conference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -432,6 +442,7 @@
 			baseConfigurationReference = 850A8B18D0F5D6A23F2EBC8D /* Pods-conference room booking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JRX54P7M6Q;
 				INFOPLIST_FILE = "conference room booking/Info.plist";
@@ -442,6 +453,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.primethorgg.conference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

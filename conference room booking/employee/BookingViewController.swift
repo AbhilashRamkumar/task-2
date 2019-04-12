@@ -9,119 +9,105 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import IQKeyboardManagerSwift
 
 class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
    
-    
-
-    
-    
     var dateAndTme = [String]()
-    
-    
-    
+
     @IBOutlet weak var NameTextfield: UITextField!
-    
     @IBOutlet weak var dateAndTimeTextfield: UITextField!
-    @IBOutlet weak var TimeTextField: UITextField!
+    @IBOutlet weak var StartTimeTextField: UITextField!
+    @IBOutlet weak var EndTimeTextField: UITextField!
     @IBOutlet weak var ConferenceHallTextfield: UITextField!
-    
     @IBOutlet weak var checkPressed: UIButton!
     @IBOutlet weak var bookPressed: UIButton!
     @IBOutlet weak var commentsTextfield: UITextField!
     
-
+    
+    
     var data = ["Conference hall 1","Conference hall 2","Conference hall 3"]
     var picker = UIPickerView()
     
-    
-    
     let datePicker = UIDatePicker()
-    
     let starttimedatePicker = UIDatePicker()
-  
+    let endtimedatePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    
     
     // for Date picker
     datePicker.datePickerMode = UIDatePicker.Mode.date
-    
     dateAndTimeTextfield.inputView = datePicker
-    
     datePicker.addTarget(self, action: #selector(datePickerFromValueChanged), for: UIControl.Event.valueChanged)
     
-    // Time picker
-    TimeTextField.inputView = starttimedatePicker
-        starttimedatePicker.addTarget(self, action: #selector(startTimeDiveChanged), for: .valueChanged)
+    // Start Time picker
+    starttimedatePicker.datePickerMode = UIDatePicker.Mode.time
+    StartTimeTextField.inputView = starttimedatePicker
+    starttimedatePicker.addTarget(self, action: #selector(startTimeDateChanged), for: .valueChanged)
     
-
-        
+    // End Time Picker
+    endtimedatePicker.datePickerMode = UIDatePicker.Mode.time
+    EndTimeTextField.inputView = endtimedatePicker
+    endtimedatePicker.addTarget(self, action: #selector(endTimeDateChanged), for: .valueChanged)
         
     // picker for conference hall
-        picker.delegate = self
-        picker.dataSource = self
-        ConferenceHallTextfield.inputView = picker
-    
+    picker.delegate = self
+    picker.dataSource = self
+    ConferenceHallTextfield.inputView = picker
 
-        
-        
-    
-    
-    
-    self.dateAndTimeTextfield.delegate = self
-    self.TimeTextField.delegate = self
-    
-    self.ConferenceHallTextfield.delegate = self
-    self.commentsTextfield.delegate = self
-    
-    self.NameTextfield.delegate = self
-    
-        
-    
+        self.dateAndTimeTextfield.delegate = self
+        self.StartTimeTextField.delegate = self
+        self.EndTimeTextField.delegate = self
+        self.ConferenceHallTextfield.delegate = self
+        self.commentsTextfield.delegate = self
+        self.NameTextfield.delegate = self
     DispatchQueue.main.async {
         self.dateAndTimeTextfield.layer.cornerRadius = 20
-        self.TimeTextField.layer.cornerRadius = 20
+        self.StartTimeTextField.layer.cornerRadius = 20
+        self.EndTimeTextField.layer.cornerRadius = 20
         self.ConferenceHallTextfield.layer.cornerRadius = 20
         self.commentsTextfield.layer.cornerRadius = 20
         self.checkPressed.layer.cornerRadius = 20
         self.bookPressed.layer.cornerRadius = 20
         self.NameTextfield.layer.cornerRadius = 20
     }
-    
     dateAndTimeTextfield.addPadding(.both(20))
-    TimeTextField.addPadding(.both(20))
+    StartTimeTextField.addPadding(.both(20))
+    EndTimeTextField.addPadding(.both(20))
     ConferenceHallTextfield.addPadding(.both(20))
     commentsTextfield.addPadding(.both(20))
     NameTextfield.addPadding(.both(20))
         }
-    
    // function for textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
-    
     // function for date picker
     @objc func datePickerFromValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         dateAndTimeTextfield.text = dateFormatter.string(from: sender.date)
         
     }
     // function for time picker
-      @objc func startTimeDiveChanged(sender: UIDatePicker) {
+      @objc func startTimeDateChanged(sender: UIDatePicker) {
         let timeFormatter = DateFormatter()
         timeFormatter.locale = Locale(identifier: "en_US_POSIX")
-        timeFormatter.amSymbol = "AM"
-        timeFormatter.pmSymbol = "PM"
-        timeFormatter.dateFormat = "hh:mm:ss a"
-        TimeTextField.text = timeFormatter.string(from: sender.date)
-        
+     
+        timeFormatter.dateFormat = "h:mm a"
+        StartTimeTextField.text = timeFormatter.string(from: sender.date)
     }
+    // function for end time picker
+    @objc func endTimeDateChanged(sender: UIDatePicker) {
+        let timeFormatter = DateFormatter()
+        timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+     
+        timeFormatter.dateFormat = "h:mm a"
+        EndTimeTextField.text = timeFormatter.string(from: sender.date)
+    }
+    
     
     // for conference hall
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -153,43 +139,72 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
         
         
         
-        
-        guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let time = TimeTextField.text,
-            let hall = ConferenceHallTextfield.text else {
+        guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
                 print("Please provide a value for the previous textfields")
                 return
-        }
-        
-        print("Starting call to firebase")
-        
-        var ref = Database.database().reference()
-        
-        guard let user = Auth.auth().currentUser else {
-            print("User  not authenticated")
-            return
         }
         
         let myData: [String: String] = [
             "name": name,
             "date": date,
-            "time": time,
-            "conference-hall": hall
+            "StartTime": fromTime,
+            "EndTime": toTime,
+            "conferenceHall": hall
         ]
         
-        ref.child("bookings").child(user.uid).setValue(myData) { (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
+        Database.database().reference(withPath: "booking").queryOrdered(byChild: "date").queryEqual(toValue: date).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.children.allObjects.count)
+            if snapshot.children.allObjects.count == 0{
+                //Saving fo data
+                self.saveData(myData)
+                self.commentsTextfield.text = "Available"
             }
-            else {
-                print("Data saved successfully!")
+            else{
+                var bookedStatus = false
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+                timeFormatter.timeZone = NSTimeZone.local
+                let LSTime = timeFormatter.date(from: date+" "+fromTime)
+                let LETime = timeFormatter.date(from: date+" "+toTime)
+                print(LSTime!,LETime!)
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    if let data : [String:Any] = snap.value as? [String:Any]{
+                        print(data)
+                        if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                            print(time1,time2,confinRoomNo)
+                            
+                            let FSTime = timeFormatter.date(from: date+" "+time1)
+                            let FETime = timeFormatter.date(from: date+" "+time2)
+                            print(FSTime!,FETime!)
+                            if  FSTime!.equalToDate(dateToCompare:LSTime!) ||
+                                FSTime!.equalToDate(dateToCompare: LETime!) ||
+                                FETime!.equalToDate(dateToCompare:LSTime!) ||
+                                FETime!.equalToDate(dateToCompare: LETime!) ||
+                                (FSTime!.isGreaterThanDate(dateToCompare: LSTime!) && FSTime!.isLessThanDate(dateToCompare: LETime!)) ||
+                                (FETime!.isGreaterThanDate(dateToCompare: LSTime!) && FETime!.isLessThanDate(dateToCompare: LETime!)){
+                                print("Room not avaiable")
+                                bookedStatus = true
+                                break
+                            }
+                            else{
+                                print("Avaiable")
+                            }
+                        }
+                    }
+                }
+                if !bookedStatus{
+                    self.saveData(myData)
+                }
             }
-            
-            
-            
-        }
-        // Retrieving fo data
+        })
+    }
+
+  
+
+    func saveData(_ data: [String:String]){
         let messagesDB = Database.database().reference().child("booking")
-        messagesDB.childByAutoId().setValue(myData) {
+        messagesDB.childByAutoId().setValue(data) {
             (error, reference) in
             
             if error != nil {
@@ -198,21 +213,8 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             else {
                 print("Message saved successfully!")
             }
-            
         }
-        
-        Database.database().reference(withPath: "booking").queryOrdered(byChild: "mydata").queryEqual(toValue: myData).observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.children.allObjects.count)
-            if snapshot.children.allObjects.count == 0{
-                self.commentsTextfield.text = "Available"
-            }
-            else{
-                self.commentsTextfield.text = "Room Not Available"
-            }
-        })
-        
     }
-    
     
     
    
@@ -221,9 +223,7 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBAction func checkPressed(_ sender: Any) {
         
         
-        
-        guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let time = TimeTextField.text,
-            let hall = ConferenceHallTextfield.text else {
+    guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
                 print("Please provide a value for the previous textfields")
                 return
         }
@@ -237,42 +237,80 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             return
         }
         
+    
+        
         let myData: [String: String] = [
             "name": name,
             "date": date,
-            "time": time,
-            "conference-hall": hall
+            "StartTime": fromTime,
+            "EndTime": toTime,
+            "conferenceHall": hall
         ]
         
         
-        Database.database().reference(withPath: "booking").queryOrdered(byChild: "mydata").queryEqual(toValue: myData).observeSingleEvent(of: .value, with: { snapshot in
+        
+     
+        
+        
+        
+        Database.database().reference(withPath: "booking").queryOrdered(byChild: "date").queryEqual(toValue: date).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.children.allObjects.count)
             if snapshot.children.allObjects.count == 0{
                 self.commentsTextfield.text = "Available"
             }
             else{
-                self.commentsTextfield.text = "Room Not Available"
+                var bookedStatus = false
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+                timeFormatter.timeZone = NSTimeZone.local
+                let LSTime = timeFormatter.date(from: date+" "+fromTime)
+                let LETime = timeFormatter.date(from: date+" "+toTime)
+                print(LSTime!,LETime!)
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    if let data : [String:Any] = snap.value as? [String:Any]{
+                        print(data)
+                        if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                            print(time1,time2,confinRoomNo)
+                            
+                            let FSTime = timeFormatter.date(from: date+" "+time1)
+                            let FETime = timeFormatter.date(from: date+" "+time2)
+                            print(FSTime!,FETime!)
+                            if  FSTime!.equalToDate(dateToCompare:LSTime!) ||
+                                FSTime!.equalToDate(dateToCompare: LETime!) ||
+                                FETime!.equalToDate(dateToCompare:LSTime!) ||
+                                FETime!.equalToDate(dateToCompare: LETime!) ||
+                                (FSTime!.isGreaterThanDate(dateToCompare: LSTime!) && FSTime!.isLessThanDate(dateToCompare: LETime!)) ||
+                                (FETime!.isGreaterThanDate(dateToCompare: LSTime!) && FETime!.isLessThanDate(dateToCompare: LETime!)){
+                                print("Room not avaiable")
+                                bookedStatus = true
+                                break
+                            }
+                        }
+                    }
+                }
+                if !bookedStatus{
+                
+                    
+                self.commentsTextfield.text = "Available"
+                }else{
+                 self.commentsTextfield.text = "Room Not Available"
+                
+                }
             }
         })
-        ref.child("booking").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if snapshot.hasChild("mydata"){
-                
-                print("rooms exist")
-                
-            }else{
-                
-                print("room doesn't exist")
-            }
-            
-            
-        })
-
-        
-        
-        
     }
+        
+        
+        
+     
     
+    
+//    self.commentsTextfield.text = "Available"
+//}
+//else{
+   // self.commentsTextfield.text = "Room Not Available"
+//}
     /*    // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -310,5 +348,47 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
 
     }
     
+extension Date {
+    func isGreaterThanDate(dateToCompare: Date) -> Bool {
+        //Declare Variables
+        var isGreater = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == ComparisonResult.orderedDescending {
+            isGreater = true
+        }
+        
+        //Return Result
+        return isGreater
+    }
     
+    func isLessThanDate(dateToCompare: Date) -> Bool {
+        //Declare Variables
+        var isLess = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == ComparisonResult.orderedAscending {
+            isLess = true
+        }
+        
+        //Return Result
+        return isLess
+    }
+    
+    func equalToDate(dateToCompare: Date) -> Bool {
+        //Declare Variables
+        var isEqualTo = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == ComparisonResult.orderedSame {
+            isEqualTo = true
+        }
+        
+        //Return Result
+        return isEqualTo
+    }
+}
+
+
+
 

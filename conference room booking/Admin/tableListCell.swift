@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Firebase 
 
-class tableListCell: UITableViewController {
+class tableListCell: UITableViewCell {
 
     
     @IBOutlet weak var nameDetails: UILabel!
@@ -18,34 +17,21 @@ class tableListCell: UITableViewController {
     @IBOutlet weak var endTimeDetails: UILabel!
     @IBOutlet weak var ConferenceHallDetails: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
 
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
         
-    }
-
-
-
-    
-
-    func fetchBookingDetails(){
-        Database.database().reference(withPath: "booking").observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.children.allObjects.count)
-            if snapshot.children.allObjects.count == 0{
-                //Saving fo data
-                
-            }
-            else{
-                for child in snapshot.children {
-                    let snap = child as! DataSnapshot
-                    if let data : [String:Any] = snap.value as? [String:Any]{
-                        print(data)
-                        
-                    }
-                }
-            }
-        })
+        // Configure the view for the selected state
     }
     
-
 }
+    
+
+

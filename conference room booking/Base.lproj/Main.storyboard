@@ -246,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="2790" y="761"/>
         </scene>
-        <!--Booking Register Table Table View Controller-->
+        <!--tableListCell-->
         <scene sceneID="wjW-ga-JwH">
             <objects>
-                <viewController storyboardIdentifier="BookingRegisterTableTableViewController" id="5he-rf-ehA" customClass="BookingRegisterTableTableViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingRegisterTableTableViewController" title="tableListCell" id="5he-rf-ehA" customClass="BookingRegisterTableTableViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IEB-B5-JCB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +272,7 @@
                                 <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableListCell1" rowHeight="342" id="20E-RD-ED8" customClass="tableListCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableListCell" rowHeight="342" id="20E-RD-ED8" customClass="tableListCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="342"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="20E-RD-ED8" id="nCg-sX-hT0">
@@ -515,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbN-P8-1Qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3836" y="759.67016491754134"/>
+            <point key="canvasLocation" x="3850" y="731"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1bh-Xe-fXU">

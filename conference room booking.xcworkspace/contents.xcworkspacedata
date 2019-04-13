@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BookingRegisterTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:conference room booking.xcodeproj">
    </FileRef>
    <FileRef

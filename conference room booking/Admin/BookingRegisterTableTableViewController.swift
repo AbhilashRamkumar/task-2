@@ -1,8 +1,8 @@
 //
-//  BookingViewTableViewController.swift
+//  BookingRegisterTableTableViewController.swift
 //  conference room booking
 //
-//  Created by Admin on 13/04/19.
+//  Created by Admin on 12/04/19.
 //  Copyright © 2019 Xiphias Softwares. All rights reserved.
 //
 
@@ -16,43 +16,37 @@ struct bookingstruct {
     let StartTime : String!
     let EndTime : String!
     let conferenceHall : String!
-    
-    
+
+   
 }
 
 
-class BookingRegisterTableViewController: UIViewController {
+class BookingRegisterTableTableViewController: UITableViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    var BookingsDetails = [bookingstruct]()
+   var BookingsDetails = [bookingstruct]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.dataSource = self as! UITableViewDataSource
-        
         
         let databaseref = Database.database().reference()
         
         databaseref.child("BookingDetails").queryOrderedByKey().observe(.childAdded) { snapshot in
             
             for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                if let data : [String:Any] = snap.value as? [String:Any]{
+                 
+                    if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                    }
                 
-                print(self.BookingsDetails)
-                 let snap = child as! DataSnapshot
-            if let data : [String:Any] = snap.value as? [String:Any]{
-                if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
-                    print(time1,time2,confinRoomNo)
-          
-                            }
-                
-            }
+                }
+            self.BookingRegisterTableViewController.reloadData()
         }
+        BookingDetails()
     }
     
     
-    
+   
     func BookingDetails(){
         Database.database().reference(withPath: "booking").observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.children.allObjects.count)
@@ -71,18 +65,13 @@ class BookingRegisterTableViewController: UIViewController {
             }
         })
     }
-    
-    
-}
-}
-    
-extension BookingRegisterTableViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  
+        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BookingsDetails.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "tableListCell")
         
@@ -96,11 +85,10 @@ extension BookingRegisterTableViewController: UITableViewDataSource {
         endTimeDetails.text = BookingsDetails[indexPath.row].EndTime
         let ConferenceHallDetails = cell?.viewWithTag(5)  as! UILabel
         ConferenceHallDetails.text = BookingsDetails[indexPath.row].conferenceHall
-        
+
         
         
         return cell!
     }
-    
-    
 }
+

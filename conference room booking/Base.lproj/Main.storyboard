@@ -203,9 +203,6 @@
                                 <state key="normal" title="Booking">
                                     <color key="titleColor" red="0.066040985290000007" green="0.13845753669999999" blue="0.1676824093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="kAp-x6-0re" kind="show" id="169-pX-Mse"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Admin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-4S-Xxt">
                                 <rect key="frame" x="42" y="104" width="291.5" height="60"/>
@@ -249,7 +246,7 @@
         <!--tableListCell-->
         <scene sceneID="wjW-ga-JwH">
             <objects>
-                <viewController storyboardIdentifier="BookingRegisterTableTableViewController" title="tableListCell" id="5he-rf-ehA" customClass="BookingRegisterTableTableViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingRegisterTableViewController" title="tableListCell" id="5he-rf-ehA" customClass="BookingRegisterTableViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IEB-B5-JCB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +255,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register Bookings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgk-dZ-mKu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookings Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgk-dZ-mKu">
                                 <rect key="frame" x="24" y="104" width="327.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="BnT-YV-mIV"/>
@@ -512,66 +509,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v6i-ww-RZA"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="wfo-QT-ATl" id="cgo-Ad-iHt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbN-P8-1Qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3850" y="731"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1bh-Xe-fXU">
-            <objects>
-                <viewController id="kAp-x6-0re" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CBi-No-1up">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="Bus-KB-oBh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqn-4A-G7d">
-                                <rect key="frame" x="50.5" y="104" width="274.5" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="274.5" id="sDF-sl-QCs"/>
-                                    <constraint firstAttribute="height" constant="60" id="yRl-ji-94A"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1ag-41-mir">
-                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableListCell2" id="aXi-Ig-1Wp">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aXi-Ig-1Wp" id="nhh-s2-pzt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="bqn-4A-G7d" firstAttribute="top" secondItem="c7v-FE-5Bj" secondAttribute="top" constant="40" id="3Iq-wc-UgW"/>
-                            <constraint firstItem="c7v-FE-5Bj" firstAttribute="bottom" secondItem="Bus-KB-oBh" secondAttribute="bottom" id="6zW-VH-R4R"/>
-                            <constraint firstItem="1ag-41-mir" firstAttribute="leading" secondItem="c7v-FE-5Bj" secondAttribute="leading" id="KPw-pB-QFj"/>
-                            <constraint firstItem="c7v-FE-5Bj" firstAttribute="bottom" secondItem="1ag-41-mir" secondAttribute="bottom" id="M2J-oZ-05b"/>
-                            <constraint firstItem="c7v-FE-5Bj" firstAttribute="trailing" secondItem="Bus-KB-oBh" secondAttribute="trailing" id="SWJ-kb-n1J"/>
-                            <constraint firstItem="c7v-FE-5Bj" firstAttribute="trailing" secondItem="1ag-41-mir" secondAttribute="trailing" id="Xpt-Yb-nKC"/>
-                            <constraint firstItem="Bus-KB-oBh" firstAttribute="leading" secondItem="c7v-FE-5Bj" secondAttribute="leading" id="ZqF-M5-qih"/>
-                            <constraint firstItem="bqn-4A-G7d" firstAttribute="centerX" secondItem="CBi-No-1up" secondAttribute="centerX" id="bHF-8L-rk9"/>
-                            <constraint firstItem="Bus-KB-oBh" firstAttribute="top" secondItem="c7v-FE-5Bj" secondAttribute="top" id="jMn-HH-3QD"/>
-                            <constraint firstItem="1ag-41-mir" firstAttribute="top" secondItem="bqn-4A-G7d" secondAttribute="bottom" id="p0z-T1-Mb8"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="c7v-FE-5Bj"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="COZ-iB-fFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3882" y="1633"/>
         </scene>
         <!--Booking/Register-->
         <scene sceneID="lFq-VE-Wva">

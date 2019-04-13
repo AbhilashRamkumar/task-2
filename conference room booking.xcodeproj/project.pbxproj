@@ -13,9 +13,9 @@
 		847064CE2251E5CC00FA95A4 /* BookRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */; };
 		847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */; };
 		847064D22252410700FA95A4 /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064D12252410700FA95A4 /* AdminLoginViewController.swift */; };
+		84D3B2F72261B5E300439D18 /* BookingViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */; };
 		84DA0B28224F7A2000C49988 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA0B27224F7A2000C49988 /* RegisterViewController.swift */; };
 		84ED2E1622606F9D00408A96 /* tableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED2E1522606F9D00408A96 /* tableListCell.swift */; };
-		84ED2E1822607A8D00408A96 /* BookingRegisterTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED2E1722607A8D00408A96 /* BookingRegisterTableTableViewController.swift */; };
 		AD02B22B224C8A2100197D28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD02B22A224C8A2000197D28 /* GoogleService-Info.plist */; };
 		ADFF754F224B888F0098EEAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF754E224B888F0098EEAD /* AppDelegate.swift */; };
 		ADFF7551224B888F0098EEAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF7550224B888F0098EEAD /* ViewController.swift */; };
@@ -30,9 +30,9 @@
 		847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRegViewController.swift; sourceTree = "<group>"; };
 		847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginViewController.swift; sourceTree = "<group>"; };
 		847064D12252410700FA95A4 /* AdminLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
+		84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewTableViewController.swift; sourceTree = "<group>"; };
 		84DA0B27224F7A2000C49988 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84ED2E1522606F9D00408A96 /* tableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableListCell.swift; sourceTree = "<group>"; };
-		84ED2E1722607A8D00408A96 /* BookingRegisterTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRegisterTableTableViewController.swift; sourceTree = "<group>"; };
 		850A8B18D0F5D6A23F2EBC8D /* Pods-conference room booking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conference room booking.release.xcconfig"; path = "Target Support Files/Pods-conference room booking/Pods-conference room booking.release.xcconfig"; sourceTree = "<group>"; };
 		91BA4E008C0AC75936F4949A /* Pods_conference_room_booking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conference_room_booking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD02B22A224C8A2000197D28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			children = (
 				847064D12252410700FA95A4 /* AdminLoginViewController.swift */,
 				847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */,
-				84ED2E1722607A8D00408A96 /* BookingRegisterTableTableViewController.swift */,
+				84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */,
 				84ED2E1522606F9D00408A96 /* tableListCell.swift */,
 			);
 			path = Admin;
@@ -273,10 +273,10 @@
 				ADFF7551224B888F0098EEAD /* ViewController.swift in Sources */,
 				84ED2E1622606F9D00408A96 /* tableListCell.swift in Sources */,
 				847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */,
-				84ED2E1822607A8D00408A96 /* BookingRegisterTableTableViewController.swift in Sources */,
 				ADFF754F224B888F0098EEAD /* AppDelegate.swift in Sources */,
 				842281EB225328E30059D332 /* BookingViewController.swift in Sources */,
 				847064D22252410700FA95A4 /* AdminLoginViewController.swift in Sources */,
+				84D3B2F72261B5E300439D18 /* BookingViewTableViewController.swift in Sources */,
 				842281ED22532CCA0059D332 /* WelcomeAdminViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

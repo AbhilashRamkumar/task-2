@@ -30,25 +30,18 @@ class BookingRegisterTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self as! UITableViewDataSource
+        tableView.dataSource = self
+        tableView.delegate = self
         
         
-        let databaseref = Database.database().reference()
+        self.BookingDetails()
         
-        databaseref.child("BookingDetails").queryOrderedByKey().observe(.childAdded) { snapshot in
-            
-            for child in snapshot.children {
-                
-                print(self.BookingsDetails)
-                 let snap = child as! DataSnapshot
-            if let data : [String:Any] = snap.value as? [String:Any]{
-                if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
-                    print(time1,time2,confinRoomNo)
-          
-                            }
-                
-            }
-        }
+        tableView.register(UINib(nibName: "bookingCell", bundle: nil) , forCellReuseIdentifier: "tableListCell")
+     
+        
+        tableView.separatorStyle = .none
+        
+        self.tableView.reloadData()
     }
     
     
@@ -64,19 +57,35 @@ class BookingRegisterTableViewController: UIViewController {
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
                     if let data : [String:Any] = snap.value as? [String:Any]{
-                        print(data)
+                        if let name : String = data["name"] as? String,let date : String = data["date"] as? String, let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                           
+                            let snapshotValue = snapshot.value as! Dictionary<String,String>
+                            let name = snapshotValue["name"]!
+                            let date = snapshotValue["date"]!
+                       
+                           
+                            let StartTime = snapshotValue["StartTime"]!
+                            let EndTime = snapshotValue["EndTime"]!
+                            let conferenceHall = snapshotValue["EndTime"]!
+
+                        }
                         
                     }
+                    
                 }
             }
         })
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
+        
     }
     
     
-}
+
 }
     
-extension BookingRegisterTableViewController: UITableViewDataSource {
+extension BookingRegisterTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BookingsDetails.count

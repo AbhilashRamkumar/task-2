@@ -72,10 +72,14 @@ class BookingLoginViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             SVProgressHUD.dismiss()
-            if let error = error {
-                //show alert.
-                print(error.localizedDescription)
+             if error != nil {
+                var myAlert = UIAlertController(title: "Allert", message: "All fields are requierd to e filled", preferredStyle: UIAlertController.Style.alert)
+                
+                let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil)
+                myAlert.addAction(okAction)
+                self.present(myAlert, animated: true, completion: nil)
                 return
+                
             }
             self.performSegue(withIdentifier: "BookingViewController", sender: self)
         }

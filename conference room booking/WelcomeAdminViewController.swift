@@ -20,8 +20,6 @@ class WelcomeAdminViewController: UIViewController {
         
         registerPressed.layer.cornerRadius = 15
         
-        
-        bookingPressed.layer.cornerRadius = 15
        
         
     }

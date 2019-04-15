@@ -57,7 +57,14 @@ class AdminLoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             
             if error != nil {
-                print(error!)
+                var myAlert = UIAlertController(title: "Allert", message: "All fields are requierd to e filled", preferredStyle: UIAlertController.Style.alert)
+                
+                let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil)
+                myAlert.addAction(okAction)
+                self.present(myAlert, animated: true, completion: nil)
+                
+                return
+                
                 
                 
             }else {

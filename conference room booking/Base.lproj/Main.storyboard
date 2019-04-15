@@ -189,20 +189,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Booking">
                                     <color key="titleColor" red="0.066040985290000007" green="0.13845753669999999" blue="0.1676824093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="5he-rf-ehA" kind="show" identifier="BookingRegisterTableTableViewController" id="xs4-yc-xBt"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPI-br-W1h">
-                                <rect key="frame" x="75.5" y="359" width="224" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <state key="normal" title="Booking">
-                                    <color key="titleColor" red="0.066040985290000007" green="0.13845753669999999" blue="0.1676824093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Admin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-4S-Xxt">
                                 <rect key="frame" x="42" y="104" width="291.5" height="60"/>
@@ -221,21 +213,15 @@
                             <constraint firstItem="H33-Yv-VLP" firstAttribute="leading" secondItem="kib-sV-Xw7" secondAttribute="leading" id="5t9-Wv-NO1"/>
                             <constraint firstItem="UQi-7J-Pze" firstAttribute="centerX" secondItem="SR9-eJ-OVs" secondAttribute="centerX" id="FNn-hn-WVf"/>
                             <constraint firstItem="kib-sV-Xw7" firstAttribute="trailing" secondItem="H33-Yv-VLP" secondAttribute="trailing" id="JPW-E7-Dow"/>
-                            <constraint firstItem="UQi-7J-Pze" firstAttribute="width" secondItem="JPI-br-W1h" secondAttribute="width" id="Qvh-k5-Gd9"/>
                             <constraint firstItem="kib-sV-Xw7" firstAttribute="bottom" secondItem="H33-Yv-VLP" secondAttribute="bottom" id="avo-x0-QtZ"/>
-                            <constraint firstItem="JPI-br-W1h" firstAttribute="top" secondItem="UQi-7J-Pze" secondAttribute="bottom" constant="35" id="c6h-Lh-ol3"/>
-                            <constraint firstItem="JPI-br-W1h" firstAttribute="centerX" secondItem="SR9-eJ-OVs" secondAttribute="centerX" id="gU9-TS-RWh"/>
                             <constraint firstItem="5Mg-4S-Xxt" firstAttribute="centerX" secondItem="SR9-eJ-OVs" secondAttribute="centerX" id="hMx-15-iDh"/>
                             <constraint firstItem="H33-Yv-VLP" firstAttribute="top" secondItem="kib-sV-Xw7" secondAttribute="top" id="mUB-VC-qes"/>
                             <constraint firstItem="UQi-7J-Pze" firstAttribute="top" secondItem="kib-sV-Xw7" secondAttribute="top" constant="200" id="pp5-TW-qVP"/>
                             <constraint firstItem="5Mg-4S-Xxt" firstAttribute="top" secondItem="kib-sV-Xw7" secondAttribute="top" constant="40" id="qXF-F3-ChX"/>
-                            <constraint firstItem="JPI-br-W1h" firstAttribute="centerX" secondItem="SR9-eJ-OVs" secondAttribute="centerX" id="wFR-71-8WE"/>
-                            <constraint firstItem="UQi-7J-Pze" firstAttribute="height" secondItem="JPI-br-W1h" secondAttribute="height" id="zOS-SD-ZJI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kib-sV-Xw7"/>
                     </view>
                     <connections>
-                        <outlet property="bookingPressed" destination="JPI-br-W1h" id="15G-UI-Kak"/>
                         <outlet property="registerPressed" destination="UQi-7J-Pze" id="sEO-va-gr8"/>
                     </connections>
                 </viewController>
@@ -734,6 +720,13 @@
                                                     <action selector="registerPressed:" destination="mdj-NM-I10" eventType="touchUpInside" id="JC0-k8-asZ"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-Xu-4wa">
+                                                <rect key="frame" x="37" y="108" width="76" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -798,13 +791,14 @@
                         <outlet property="EmailDetails" destination="L2Q-ZI-8Fq" id="nEA-zX-OVH"/>
                         <outlet property="NameDetails" destination="iEx-zh-njO" id="anY-ah-mFf"/>
                         <outlet property="PaswordDetails" destination="E5D-UC-F4Q" id="4al-8A-qmO"/>
+                        <outlet property="lblVaildationMessage" destination="DFY-Xu-4wa" id="nto-u6-94V"/>
                         <outlet property="registerPressed" destination="kjR-Ut-aqY" id="iDY-NU-3zh"/>
                         <segue destination="Vii-R2-zPW" kind="show" identifier="BookingLoginViewController" id="r4b-Re-XGR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhH-FD-2zE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2884" y="-1510"/>
+            <point key="canvasLocation" x="2884" y="-1510.7946026986508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KPs-AF-DwA">

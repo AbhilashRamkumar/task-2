@@ -31,6 +31,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var registerPressed: UIButton!
     
+    @IBOutlet weak var lblVaildationMessage: UILabel!
     
     
     
@@ -38,8 +39,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
+
         
         
         self.NameDetails.delegate = self
@@ -87,8 +87,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().createUser(withEmail: EmailDetails.text!, password: PaswordDetails.text!) { (user, error) in
             SVProgressHUD.dismiss()
-            if error != nil {
-                print(error)
+            if error != nil
+            {
+              var myAlert = UIAlertController(title: "Allert", message: "All fields are requierd to e filled", preferredStyle: UIAlertController.Style.alert)
+                
+                let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil)
+                myAlert.addAction(okAction)
+                self.present(myAlert, animated: true, completion: nil)
+                return
                 
             }else {
                 //Success

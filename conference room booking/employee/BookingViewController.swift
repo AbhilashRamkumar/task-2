@@ -139,9 +139,10 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
         
         
         
+        
         guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
-                print("Please provide a value for the previous textfields")
-                return
+            print("Please provide a value for the previous textfields")
+            return
         }
         
         let myData: [String: String] = [
@@ -152,7 +153,7 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             "conferenceHall": hall
         ]
         
-        Database.database().reference(withPath: "booking").queryOrdered(byChild: "date").queryEqual(toValue: date).observeSingleEvent(of: .value, with: { snapshot in
+        Database.database().reference(withPath: "booking").queryEqual(toValue: date).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.children.allObjects.count)
             if snapshot.children.allObjects.count == 0{
                 //Saving fo data
@@ -171,8 +172,8 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
                     let snap = child as! DataSnapshot
                     if let data : [String:Any] = snap.value as? [String:Any]{
                         print(data)
-                        if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
-                            print(time1,time2,confinRoomNo)
+                        if let name : String = data["name"] as? String,let date : String = data["date"] as? String,let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                            print(name,date,time1,time2,confinRoomNo)
                             
                             let FSTime = timeFormatter.date(from: date+" "+time1)
                             let FETime = timeFormatter.date(from: date+" "+time2)
@@ -199,9 +200,9 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             }
         })
     }
-
-  
-
+    
+    
+    
     func saveData(_ data: [String:String]){
         let messagesDB = Database.database().reference().child("booking")
         messagesDB.childByAutoId().setValue(data) {
@@ -215,17 +216,16 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             }
         }
     }
-    
+
     
    
     
     
     @IBAction func checkPressed(_ sender: Any) {
         
-        
-    guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
-                print("Please provide a value for the previous textfields")
-                return
+        guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
+            print("Please provide a value for the previous textfields")
+            return
         }
         
         print("Starting call to firebase")
@@ -237,7 +237,7 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             return
         }
         
-    
+        
         
         let myData: [String: String] = [
             "name": name,
@@ -247,13 +247,8 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
             "conferenceHall": hall
         ]
         
-        
-        
-     
-        
-        
-        
-        Database.database().reference(withPath: "booking").queryOrdered(byChild: "date").queryEqual(toValue: date).observeSingleEvent(of: .value, with: { snapshot in
+    
+        Database.database().reference(withPath: "booking").observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.children.allObjects.count)
             if snapshot.children.allObjects.count == 0{
                 self.commentsTextfield.text = "Available"
@@ -270,8 +265,8 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
                     let snap = child as! DataSnapshot
                     if let data : [String:Any] = snap.value as? [String:Any]{
                         print(data)
-                        if let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
-                            print(time1,time2,confinRoomNo)
+                        if let name : String = data["name"] as? String,let date : String = data["date"] as? String,let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
+                            print(name,date,time1,time2,confinRoomNo)
                             
                             let FSTime = timeFormatter.date(from: date+" "+time1)
                             let FETime = timeFormatter.date(from: date+" "+time2)
@@ -290,17 +285,16 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
                     }
                 }
                 if !bookedStatus{
-                
                     
-                self.commentsTextfield.text = "Available"
+                    
+                    self.commentsTextfield.text = "Available"
                 }else{
-                 self.commentsTextfield.text = "Room Not Available"
-                
+                    self.commentsTextfield.text = "Room Not Available"
+                    
                 }
             }
         })
     }
-        
         
         
      
@@ -347,6 +341,7 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
     //    }
 
     }
+
     
 extension Date {
     func isGreaterThanDate(dateToCompare: Date) -> Bool {

@@ -1,5 +1,5 @@
 //
-//  BookingAdminViewController.swift
+//  BookingRegViewController.swift
 //  conference room booking
 //
 //  Created by Admin on 15/04/19.
@@ -8,17 +8,18 @@
 
 import UIKit
 
-class BookingAdminViewController: UIViewController {
+class BookingRegViewController: UIViewController {
+
+    @IBOutlet weak var RegisterPressed: UIButton!
+    
     @IBOutlet weak var BookingPressed: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BookingPressed.layer.cornerRadius = 15
         
     }
     
-
-  
 
 }

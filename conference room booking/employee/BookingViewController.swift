@@ -223,6 +223,9 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
     
     @IBAction func checkPressed(_ sender: Any) {
         
+        
+        
+        
         guard let name = NameTextfield.text, let date = dateAndTimeTextfield.text, let fromTime = StartTimeTextField.text, let toTime = EndTimeTextField.text, let hall = ConferenceHallTextfield.text else {
             print("Please provide a value for the previous textfields")
             return
@@ -250,7 +253,12 @@ class BookingViewController: UIViewController, UITextFieldDelegate, UIPickerView
     
         Database.database().reference(withPath: "booking").observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.children.allObjects.count)
+            
+            
+            
+            
             if snapshot.children.allObjects.count == 0{
+
                 self.commentsTextfield.text = "Available"
             }
             else{

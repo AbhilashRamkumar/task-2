@@ -44,7 +44,7 @@
                                     <color key="titleColor" red="0.04929659515619278" green="0.11846105009317398" blue="0.14343729615211487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lD0-qm-UUF" kind="show" id="mR5-s1-kh7"/>
+                                    <segue destination="lD0-qm-UUF" kind="show" identifier="" id="yah-Kk-TU1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMF-Di-gHU">
@@ -80,7 +80,7 @@
                     <navigationItem key="navigationItem" title="welocme" id="i2S-Su-ZLJ"/>
                     <connections>
                         <outlet property="AdminButton" destination="UMF-Di-gHU" id="Ov1-mg-zpS"/>
-                        <outlet property="EmpoyeeButton" destination="X1x-dd-KRq" id="WK4-ZQ-xGj"/>
+                        <outlet property="EmpoyeeButton" destination="X1x-dd-KRq" id="HcH-9z-ZCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -162,7 +162,7 @@
                         <outlet property="emailTextfield" destination="c0P-1d-se5" id="28M-f4-YRX"/>
                         <outlet property="loginPressed" destination="lh7-OI-iWr" id="id9-Kd-lZN"/>
                         <outlet property="passwordTextfield" destination="tm1-Qu-v4X" id="4FN-ic-ocY"/>
-                        <segue destination="xer-DV-bFT" kind="show" id="BK1-2t-f9B"/>
+                        <segue destination="xer-DV-bFT" kind="show" identifier="BookingAdminViewController" id="BK1-2t-f9B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYd-h9-EDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +222,7 @@
                         <viewLayoutGuide key="safeArea" id="kib-sV-Xw7"/>
                     </view>
                     <connections>
-                        <outlet property="BookingPressed" destination="UQi-7J-Pze" id="vzC-TX-ZIh"/>
+                        <outlet property="BookingPressed" destination="UQi-7J-Pze" id="nbk-r5-Iws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgD-nT-CqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,7 +495,7 @@
         <!--Booking/Register-->
         <scene sceneID="lFq-VE-Wva">
             <objects>
-                <viewController storyboardIdentifier="BookRegViewController" title="Booking/Register" id="lD0-qm-UUF" customClass="BookRegViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingRegViewController" title="Booking/Register" id="lD0-qm-UUF" customClass="BookingRegViewController" customModule="conference_room_booking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qdg-VE-bIv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -512,7 +512,7 @@
                                     <color key="titleColor" red="0.066040985290000007" green="0.13845753669999999" blue="0.1676824093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mdj-NM-I10" kind="show" id="bFP-Tk-1nu"/>
+                                    <segue destination="mdj-NM-I10" kind="show" identifier="" id="bFP-Tk-1nu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1y-LY-ppT">
@@ -546,8 +546,8 @@
                         <viewLayoutGuide key="safeArea" id="74B-EE-fTE"/>
                     </view>
                     <connections>
-                        <outlet property="BookingButton" destination="i1y-LY-ppT" id="8lh-jL-Im3"/>
-                        <outlet property="RegisterButton" destination="PZD-Br-3E3" id="axx-fC-2Y7"/>
+                        <outlet property="BookingPressed" destination="i1y-LY-ppT" id="cxp-Nz-UUe"/>
+                        <outlet property="RegisterPressed" destination="PZD-Br-3E3" id="CFs-gv-eQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmS-is-jST" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -985,6 +985,6 @@
         <image name="xiphias-logo (1)" width="512" height="373"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r4b-Re-XGR"/>
+        <segue reference="QhI-YM-KAd"/>
     </inferredMetricsTieBreakers>
 </document>

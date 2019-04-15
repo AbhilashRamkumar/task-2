@@ -9,8 +9,9 @@
 import UIKit
 
 class WelcomeAdminViewController: UIViewController {
-    @IBOutlet weak var registerPressed: UIButton!
-    @IBOutlet weak var bookingPressed: UIButton!
+    
+    @IBOutlet weak var BookingPressed: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class WelcomeAdminViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        registerPressed.layer.cornerRadius = 15
+        BookingPressed.layer.cornerRadius = 15
         
        
         

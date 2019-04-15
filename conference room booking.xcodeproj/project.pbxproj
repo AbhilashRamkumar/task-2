@@ -10,7 +10,7 @@
 		5B003E8332508C58C4B35ED7 /* Pods_conference_room_booking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BA4E008C0AC75936F4949A /* Pods_conference_room_booking.framework */; };
 		842281EB225328E30059D332 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842281EA225328E30059D332 /* BookingViewController.swift */; };
 		842281ED22532CCA0059D332 /* WelcomeAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842281EC22532CCA0059D332 /* WelcomeAdminViewController.swift */; };
-		847064CE2251E5CC00FA95A4 /* BookRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */; };
+		846BD0B422649BB40034B4A7 /* BookingAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BD0B322649BB40034B4A7 /* BookingAdminViewController.swift */; };
 		847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */; };
 		847064D22252410700FA95A4 /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847064D12252410700FA95A4 /* AdminLoginViewController.swift */; };
 		84D3B2F72261B5E300439D18 /* BookingViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */; };
@@ -27,7 +27,7 @@
 /* Begin PBXFileReference section */
 		842281EA225328E30059D332 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		842281EC22532CCA0059D332 /* WelcomeAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAdminViewController.swift; sourceTree = "<group>"; };
-		847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRegViewController.swift; sourceTree = "<group>"; };
+		846BD0B322649BB40034B4A7 /* BookingAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookingAdminViewController.swift; path = "/Users/admin/Desktop/Projects Abhilash R/task/conference room booking/Admin/BookingAdminViewController.swift"; sourceTree = "<absolute>"; };
 		847064CF2251FBA400FA95A4 /* BookingLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginViewController.swift; sourceTree = "<group>"; };
 		847064D12252410700FA95A4 /* AdminLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
 		84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewTableViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				847064D12252410700FA95A4 /* AdminLoginViewController.swift */,
-				847064CD2251E5CC00FA95A4 /* BookRegViewController.swift */,
+				846BD0B322649BB40034B4A7 /* BookingAdminViewController.swift */,
 				84D3B2F62261B5E300439D18 /* BookingViewTableViewController.swift */,
 				84ED2E1522606F9D00408A96 /* tableListCell.swift */,
 			);
@@ -268,11 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847064CE2251E5CC00FA95A4 /* BookRegViewController.swift in Sources */,
 				84DA0B28224F7A2000C49988 /* RegisterViewController.swift in Sources */,
 				ADFF7551224B888F0098EEAD /* ViewController.swift in Sources */,
 				84ED2E1622606F9D00408A96 /* tableListCell.swift in Sources */,
 				847064D02251FBA400FA95A4 /* BookingLoginViewController.swift in Sources */,
+				846BD0B422649BB40034B4A7 /* BookingAdminViewController.swift in Sources */,
 				ADFF754F224B888F0098EEAD /* AppDelegate.swift in Sources */,
 				842281EB225328E30059D332 /* BookingViewController.swift in Sources */,
 				847064D22252410700FA95A4 /* AdminLoginViewController.swift in Sources */,

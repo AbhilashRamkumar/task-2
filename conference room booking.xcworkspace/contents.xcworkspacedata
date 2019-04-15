@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:BookingRegisterTableViewController.swift">
+      location = "group:/Users/admin/Desktop/Projects Abhilash R/task/conference room booking/Admin/BookingAdminViewController.swift">
    </FileRef>
    <FileRef
       location = "group:conference room booking.xcodeproj">

@@ -72,7 +72,7 @@ class AdminLoginViewController: UIViewController, UITextFieldDelegate {
                 
                 SVProgressHUD.dismiss()
                 
-                self.performSegue(withIdentifier: "WelcomeAdminViewController", sender: self)
+                self.performSegue(withIdentifier: "BookingAdminViewController", sender: self)
                 
             }
             
@@ -82,7 +82,7 @@ class AdminLoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        if (identifier == "WelcomeAdminViewController") {
+        if (identifier == "BookingAdminViewController") {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
             DispatchQueue.main.async {
                 self.show(vc, sender: self)

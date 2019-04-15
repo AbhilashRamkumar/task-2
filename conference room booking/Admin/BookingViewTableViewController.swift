@@ -36,12 +36,14 @@ class BookingRegisterTableViewController: UIViewController {
         
         self.BookingDetails()
         
-        tableView.register(UINib(nibName: "bookingCell", bundle: nil) , forCellReuseIdentifier: "tableListCell")
+
      
         
         tableView.separatorStyle = .none
         
+       
         self.tableView.reloadData()
+    
     }
     
     
@@ -56,29 +58,27 @@ class BookingRegisterTableViewController: UIViewController {
             else{
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
-                    if let data : [String:Any] = snap.value as? [String:Any]{
+                    if let data : [String:Any] = snap.value as? [String:Any] {
                         if let name : String = data["name"] as? String,let date : String = data["date"] as? String, let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
                            
-                            let snapshotValue = snapshot.value as! Dictionary<String,String>
-                            let name = snapshotValue["name"]!
-                            let date = snapshotValue["date"]!
-                       
-                           
-                            let StartTime = snapshotValue["StartTime"]!
-                            let EndTime = snapshotValue["EndTime"]!
-                            let conferenceHall = snapshotValue["EndTime"]!
+                            
+                            self.BookingsDetails.append(bookingstruct(name: "name", date: "date", StartTime: "StartTime", EndTime: "EndTime", conferenceHall: "conferenceHall"))
 
+                            
+                           
+                            
                         }
                         
                     }
                     
                 }
             }
+        
         })
         DispatchQueue.main.async{
             self.tableView.reloadData()
         }
-        
+       
     }
     
     

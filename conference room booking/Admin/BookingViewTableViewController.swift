@@ -62,7 +62,7 @@ class BookingRegisterTableViewController: UIViewController {
                         if let name : String = data["name"] as? String,let date : String = data["date"] as? String, let time1 : String = data["StartTime"] as? String, let time2 : String = data["EndTime"] as? String, let confinRoomNo : String = data["conferenceHall"] as? String{
                            
                             
-                            self.BookingsDetails.append(bookingstruct(name: "name", date: "date", StartTime: "StartTime", EndTime: "EndTime", conferenceHall: "conferenceHall"))
+                            self.BookingsDetails.append(bookingstruct(name: "name", date: "date", StartTime: "StartTime", EndTime: "EndTime", conferenceHall: "conferenceHall") )
 
                             
                            
